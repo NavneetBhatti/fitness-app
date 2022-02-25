@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main"
+            android:elevation="4dp"
+            android:minHeight="?attr/actionBarSize"
+            android:padding="5dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:titleTextAppearance="@style/Toolbar.TitleText">
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:id="@+id/top_layer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_bar_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/day_text_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="Monday"
+                android:textAlignment="center"
+                android:textColor="@color/text_header_blue"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/month_text_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Sep"
+                    android:textColor="@color/text_header_blue"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="0dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/date_text_main"
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="27"
+                    android:textColor="@color/text_header_blue"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.8dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_grey" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="22dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Today's Workout"
+                android:textColor="@color/text_blue"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/start_btn"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/secondary_button"
+                android:elevation="1dp"
+                android:onClick="onStartWorkout"
+                android:paddingHorizontal="30dp"
+                android:text="Start"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/main_image"
+                android:layout_width="wrap_content"
+                android:layout_height="160dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/home_image" />
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/timer_layout"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <Chronometer
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/chronometer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textColor="@color/yellow"
+                    android:textSize="45sp" />
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/start_timer_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_btn_bckground"
+                        android:src="@drawable/ic_baseline_play_arrow_24"
+                        android:backgroundTint="@color/main"
+                        android:textAllCaps="false"
+                        android:onClick="startChronometer"
+                        android:textColor="#ffffff"
+                        tools:ignore="OnClick" />
+                    <ImageButton
+                        android:id="@+id/pause_timer_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_btn_bckground"
+                        android:src="@drawable/ic_baseline_pause_24"
+                        android:backgroundTint="@color/main"
+                        android:textAllCaps="false"
+                        android:onClick="pauseChronometer"
+                        android:textColor="#ffffff"
+                        android:visibility="gone"
+                        tools:ignore="OnClick" />
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+                    <ImageButton
+                        android:id="@+id/reset_timer_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_btn_bckground"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        android:backgroundTint="@color/main"
+                        android:textAllCaps="false"
+                        android:onClick="resetChronometer"
+                        android:textColor="#ffffff"
+                        tools:ignore="OnClick" />
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+                    <Button
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/secondary_button"
+                        android:elevation="1dp"
+                        android:onClick="onCompletedWorkout"
+                        android:paddingHorizontal="30dp"
+                        android:backgroundTint="@color/main"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.8dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_grey" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/main_workout_list"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_layer"
+        android:divider="@null"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        tools:listitem="@layout/main_screen_list" />
+
+    <ListView
+        android:id="@+id/main_workout_list_timer"
+        android:scrollbars="none"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_layer"
+        android:divider="@null"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        tools:listitem="@layout/main_screen_timer_list" />
+
+    <RelativeLayout
+        android:id="@+id/empty_work_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_layer"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="30dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/empty_image_workout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/empty_workout" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/empty_image_workout"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/secondary_button"
+            android:backgroundTint="@color/yellow"
+            android:elevation="1dp"
+            android:onClick="goToAddWorkoutScreen"
+            android:text="Add Workout"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+             />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/progress_background"
+        android:elevation="8dp">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="false"
+            android:padding="5dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

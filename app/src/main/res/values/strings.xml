@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FitnessApp</string>
+    <string name="radio_female">Female</string>
+    <string name="radio_male">Male</string>
+</resources>
